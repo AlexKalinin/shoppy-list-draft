@@ -1,0 +1,23 @@
+<%= link_to 'Add new product to this list', new_product_to_product_list_path(@product_list) %>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th colspan="4">Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @product_list.products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove from this list', remove_product_from_product_list_path(@product_list, product_id: product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>

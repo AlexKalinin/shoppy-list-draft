@@ -1,0 +1,9 @@
+<h1>Add Product to <%= @product_list.name %></h1>
+
+<%= form_for(:product_list, method: :post, url: add_product_to_product_list_path(@product_list)) do |f| %>
+    <%= f.select :products, (Product.all - @product_list.products).map{|p| [p.name, p.id]} %>
+    <br />
+    <%= f.submit 'Add product' %>
+<% end %>
+
+<%= link_to 'Back', product_lists_path %>
